@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">  <!-- fluid for full screen -->
+    <h2>📈 Stock Market Dashboard</h2>
+
+    {% if message %}
+        <div class="message" style="font-size: 22px; color: green; text-align: center; margin-bottom: 20px;">{{ message }}</div>
+    {% endif %}
+
+    <h3>Top 20 Gainers (NSE)</h3>
+    <div class="table-container">
+        {{ nse_g | safe }}
+    </div>
+
+    <h3>Top 20 Losers (NSE)</h3>
+    <div class="table-container">
+        {{ nse_l | safe }}
+    </div>
+
+    <h3>Top 20 Gainers (BSE)</h3>
+    <div class="table-container">
+        {{ bse_g | safe }}
+    </div>
+
+    <h3>Top 20 Losers (BSE)</h3>
+    <div class="table-container">
+        {{ bse_l | safe }}
+    </div>
+</div>
+
+<style>
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 30px;
+    }
+    table {
+        width: 100% !important;  /* force full width */
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #f5f5f5;
+    }
+</style>
+{% endblock %}
