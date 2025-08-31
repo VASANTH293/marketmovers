@@ -17,6 +17,3 @@ async def login(request: Request):
 app.include_router(home.router)
 app.include_router(signup.router)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello from FastAPI on Vercel!"}
