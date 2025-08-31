@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "./main.py",
+      "src": "main.py",
       "use": "@vercel/python"
     }
   ],
@@ -11,5 +11,6 @@
       "src": "/(.*)",
       "dest": "main.py"
     }
-  ]
+  ],
+  "includeFiles": ["templates/**"]
 }
