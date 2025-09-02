@@ -1,10 +1,12 @@
-from fastapi import APIRouter, Form, Request
+from fastapi import APIRouter, Form, Request , Depends
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 import pandas as pd
 import requests
 from bsedata.bse import BSE
-from database import collection
+
+from motor.motor_asyncio import AsyncIOMotorDatabase
+from database import get_submissions_collection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -69,6 +71,8 @@ async def submit(
     stockresearch: str = Form(...),
     expertcall: str = Form(...)
 ):
+    submissions = get_submissions_collection()
+
     doc = {
         "name": name,
         "phone": phone,
@@ -78,8 +82,8 @@ async def submit(
         "stockresearch": stockresearch,
         "expertcall": expertcall
     }
-    await collection.insert_one(doc)
-    return RedirectResponse(url="/thankyou", status_code=303)
+    await submissions.insert_one(doc)
+    return RedirectResponse("/thankyou", status_code=303)
 
 @router.get("/thankyou", response_class=HTMLResponse)
 async def thankyou(request: Request):
