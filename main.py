@@ -5,7 +5,7 @@ from routes.login import router as login_router
 import os
 import uvicorn
 
-import requests
+
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.include_router(login_router)
