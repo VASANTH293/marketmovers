@@ -8,19 +8,24 @@ import uvicorn
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-app.include_router(login_router)
 
+@app.get("/")
+async def root(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+# Define login route
 @app.post("/login")
 async def login(request: Request):
     # ...your login logic here...
     message = "Login successful!"
     return templates.TemplateResponse("dashboard.html", {"request": request, "message": message})
 
-# include routers
+# Include routers
+app.include_router(login_router)
 app.include_router(home.router)
 app.include_router(signup.router)
 
 
 if __name__ == "__main__":
-        port = int(os.environ.get("PORT", 10000)) # Use environment variable for port
-        uvicorn.run(app, host="0.0.0.0",port=port)
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
