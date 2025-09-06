@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Register for Expert Guidance 📊</h2>
+    <form action="/submit" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" required>
+        <label>WhatsApp Number:</label>
+        <input type="text" name="whatsapp">
+        <label>Insurance Guidance Needed?</label>
+        <select name="insurance"><option value="yes">Yes</option><option value="no">No</option></select>
+        <label>Mutual Fund Guidance?</label>
+        <select name="mutualfund"><option value="yes">Yes</option><option value="no">No</option></select>
+        <label>Stock Research?</label>
+        <select name="stockresearch"><option value="yes">Yes</option><option value="no">No</option></select>
+        <label>Register for Expert Call?</label>
+        <select name="expertcall"><option value="yes">Yes</option><option value="no">No</option></select>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+{% endblock %}

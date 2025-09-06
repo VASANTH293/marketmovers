@@ -3,7 +3,12 @@
 <head>
     <title>Investment Advisory</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -12,25 +17,88 @@
             background-color: #333;
             color: white;
         }
-        .navbar h1 { margin: 0; font-size: 20px; }
-        .navbar .nav-buttons { display: flex; gap: 10px; }
-        .btn { padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .btn-signup { background: #28a745; color: white; }
-        .btn-login { background: #007bff; color: white; }
-        .container { max-width: 500px; margin: 40px auto; padding: 20px; }
-        form { display: flex; flex-direction: column; }
-        label { margin-top: 10px; font-weight: bold; }
-        input, select { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
-        button { margin-top: 15px; padding: 10px; background: green; color:white; border:none; cursor:pointer; border-radius: 4px; font-size: 15px; }
-        button:hover { background: darkgreen; }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Button base style */
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+        }
+
+        /* Custom colors */
+        .btn-purple {
+    background-color: #4B1D5C;
+    border: none;
+    color: white;
+  }
+
+  .btn-purple:hover {
+  background-color: #198754; /* Bootstrap green or use your preferred green */
+  border: none;
+  color: white;
+  box-shadow: none;
+}
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
         <h1>Investment Advisory 📊</h1>
         <div class="nav-buttons">
-            <a href="/signup"><button class="btn btn-signup">Sign Up</button></a>
-            <a href="/login"><button class="btn btn-login">Login</button></a>
+             <a href="/signin" class="btn btn-purple me-2">Sign in</a>
+             <a href="/signup" class="btn btn-purple">Sign up</a>
         </div>
     </div>
 

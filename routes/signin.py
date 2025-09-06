@@ -8,12 +8,12 @@ from database import get_users_collection
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-@router.get("/login", response_class=HTMLResponse)
+@router.get("/signin", response_class=HTMLResponse)
 async def login_form(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse("signin.html", {"request": request})
 
-@router.post("/login", response_class=HTMLResponse)
-async def login(
+@router.post("/signin", response_class=HTMLResponse)
+async def signin(
     request: Request,
     username: str = Form(...),
     password: str = Form(...)
@@ -22,9 +22,9 @@ async def login(
 
     user = await users_collection.find_one({"username": username})
     if not user:
-        return templates.TemplateResponse("login.html", {"request": request, "error": "❌ Invalid username"})
+        return templates.TemplateResponse("signin.html", {"request": request, "error": "❌ Invalid username"})
 
     if not bcrypt.verify(password, user["password"]):
-        return templates.TemplateResponse("login.html", {"request": request, "error": "❌ Incorrect password"})
+        return templates.TemplateResponse("signin.html", {"request": request, "error": "❌ Incorrect password"})
 
     return templates.TemplateResponse("dashboard.html", {"request": request, "message": "✅ Login successful!"})
