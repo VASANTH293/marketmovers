@@ -14,13 +14,18 @@ templates = Jinja2Templates(directory="templates")
 async def root(request: Request):
     nse_g, nse_l = fetch_nse()
     bse_g, bse_l = fetch_bse()
+
+    def to_html_safe(df):
+        return df.to_html(index=False, classes="table table-striped", border=0) if df is not None else "<p>Data not available</p>"
+
     return templates.TemplateResponse("home.html", {
         "request": request,
-        "nse_g": nse_g.to_html(index=False, classes="table table-striped", border=0),
-        "nse_l": nse_l.to_html(index=False, classes="table table-striped", border=0),
-        "bse_g": bse_g.to_html(index=False, classes="table table-striped", border=0),
-        "bse_l": bse_l.to_html(index=False, classes="table table-striped", border=0),
+        "nse_g": to_html_safe(nse_g),
+        "nse_l": to_html_safe(nse_l),
+        "bse_g": to_html_safe(bse_g),
+        "bse_l": to_html_safe(bse_l),
     })
+
 
 @app.post("/signin")
 async def signin(request: Request):

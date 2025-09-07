@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+.btn-purple {
+    background-color: #4B1D5C;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-purple:hover {
+    background-color: #198754; /* Bootstrap green or your preferred green */
+    border: none;
+    color: white;
+    box-shadow: none;
+}
+</style>
+
 <div class="container">
     <h2>Register for Expert Guidance 📊</h2>
     <form action="/submit" method="post">
@@ -17,7 +35,7 @@
         <select name="stockresearch"><option value="yes">Yes</option><option value="no">No</option></select>
         <label>Register for Expert Call?</label>
         <select name="expertcall"><option value="yes">Yes</option><option value="no">No</option></select>
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn-purple">Submit</button>
     </form>
     <br>
 {% endblock %}
